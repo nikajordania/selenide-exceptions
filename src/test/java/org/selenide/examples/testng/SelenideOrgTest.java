@@ -8,6 +8,7 @@ import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 
 import com.codeborne.selenide.ex.ElementNotFound;
+import org.openqa.selenium.NoSuchElementException;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -61,6 +62,16 @@ public class SelenideOrgTest extends BaseTestNGTest {
                 "Exception";
 
         System.out.println(errorMessageTitle);
+
+        if (testResult.getThrowable() instanceof ElementNotFound) {
+            if (testResult.getThrowable().getCause() != null) {
+                if (testResult.getThrowable().getCause() instanceof NoSuchElementException ||
+                        testResult.getThrowable().getCause() instanceof NoSuchElementException ||
+                ) {
+
+                }
+            }
+        }
     }
 
     public String categorizeException(Throwable throwable) {
